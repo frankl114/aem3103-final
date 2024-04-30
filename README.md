@@ -1,7 +1,7 @@
 ﻿  # Paper Airplane Numerical Study
   Final Project: AEM 3103 Spring 2024
 
-  - By: <NAME or NAMES of team members, if completed as a team>
+  - By: <Pengyang Li, ID: 5812974>
 
   ## Summary of Findings
   <Show the variations studied in a table>
@@ -31,6 +31,7 @@
  ## Fig. 3: Time Derivatives
  <Time-derivative of height and range for the fitted trajectory>
 ![problem 4 figure](./figs/fig3.png)
+  
   Briefly describe what is being shown in the figure.
 
   (Below are for teams of 2-3 people)
