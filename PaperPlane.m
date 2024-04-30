@@ -50,7 +50,9 @@ plot(xa(:,4),xa(:,3),'r')
 plot(xb(:,4),xb(:,3),'k')
 plot(xc(:,4),xc(:,3),'g')
 hold off
+title('height vs range with initial velocity change');
 xlabel('Range, m'), ylabel('Height, m'), grid
+legend('lowest V','nominal V','maximum V');
 
 subplot(2,1,2)
 hold on
@@ -58,6 +60,8 @@ plot(xd(:,4),xd(:,3),'r')
 plot(xe(:,4),xe(:,3),'k')
 plot(xf(:,4),xf(:,3),'g')
 xlabel('Range, m'), ylabel('Height, m'), grid
+title('height vs range with initial flight path angle change');
+legend('lowest angle','nominal angle','maximum angle');
 
 
 % %	b) Oscillating Glide due to Zero Initial Flight Path Angle
