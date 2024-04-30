@@ -35,9 +35,14 @@
     tspan	=	[0:0.001:6];
     V1=2+(7.5-2)*rand(100,1);
     Gam1=-0.5+(0.4+0.5)*rand(100,1);
+    figure
+hold on
+title('height vs range with initial velocity and initial flight path angle change 100 times');
+xlabel('Range, m'), ylabel('Height, m'), grid
     for i=1:100;
 xo		=	[V1(i);Gam1(i);H;R];
 [ta,xa]	=	ode23('EqMotion',tspan,xo);
+plot(xa(:,4),xa(:,3),'r')
 if i==1
     time=ta;
 else
@@ -55,6 +60,7 @@ else
     height=cat(1,height,xa(:,3));
 end
     end    
+    hold off
     ph=polyfit(time,height,4);
     hy=polyval(ph,tspan);
 
