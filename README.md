@@ -25,12 +25,12 @@
 
   ## Fig. 2: Monte Carlo Simulation
   <2D trajectories simulated using random sampling of parameters, overlay polynomial fit onto plot.>
-
+![problem 3 figure](./figs/fig2.png)
   Briefly describe what is being shown in the figure.
 
  ## Fig. 3: Time Derivatives
  <Time-derivative of height and range for the fitted trajectory>
-
+![problem 4 figure](./figs/fig3.png)
   Briefly describe what is being shown in the figure.
 
   (Below are for teams of 2-3 people)

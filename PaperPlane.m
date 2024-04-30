@@ -31,7 +31,7 @@
 	%xo		=	[V;Gam;H;R];
 
 
-%     %problem 4:
+%     %problem 4 and 3:
     tspan	=	[0:0.001:6];
     V1=2+(7.5-2)*rand(100,1);
     Gam1=-0.5+(0.4+0.5)*rand(100,1);
@@ -79,6 +79,22 @@ title('Range vs time ')
 xlabel('Time, s'), ylabel('Range, m'), grid
 legend('fit data with 4th order polynomial');
 
+%prob4 part
+derh=num_der_central(tspan,hy);
+derr=num_der_central(tspan,ry);
+
+figure
+subplot(2,1,1)
+plot(tspan,derh);
+title('Vertical velocity vs time ')
+xlabel('Time, s'), ylabel('Velocity, m/s'), grid
+legend('vertical velocity');
+
+subplot(2,1,2)
+plot(tspan,derr);
+title('Horizontal velocity vs time ')
+xlabel('Time, s'), ylabel('Velocity, m/s'), grid
+legend('horizontal velocity');
 
     %problem 3 sol
 % tspan	=	[0:0.001:6];
