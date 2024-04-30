@@ -26,42 +26,105 @@
 	R		=	0;			% Initial Range, m
 	to		=	0;			% Initial Time, sec
 	tf		=	6;			% Final Time, sec
-	tspan	=	[to tf];
-	%xo		=	[V;Gam;H;R];
-    V1=[2,3.55,7.5]
-    xo		=	[V1(1);Gam;H;R];
-	[ta,xa]	=	ode23('EqMotion',tspan,xo);
-	xo		=	[V1(2);Gam;H;R];
-	[tb,xb]	=	ode23('EqMotion',tspan,xo);
-    xo		=	[V1(3);Gam;H;R];
-	[tc,xc]	=	ode23('EqMotion',tspan,xo);
-Gam1=[-0.5,-0.18,0.4]
-xo=[V;Gam1(1);H;R];
-[td,xd]	=	ode23('EqMotion',tspan,xo);
-xo=[V;Gam1(2);H;R];
-[te,xe]	=	ode23('EqMotion',tspan,xo);
-xo=[V;Gam1(3);H;R];
-[tf,xf]	=	ode23('EqMotion',tspan,xo);
+	
 
+	%xo		=	[V;Gam;H;R];
+
+
+%     %problem 4:
+    tspan	=	[0:0.001:6];
+    V1=2+(7.5-2)*rand(100,1);
+    Gam1=-0.5+(0.4+0.5)*rand(100,1);
+    for i=1:100;
+xo		=	[V1(i);Gam1(i);H;R];
+[ta,xa]	=	ode23('EqMotion',tspan,xo);
+if i==1
+    time=ta;
+else
+    time=cat(1,time,ta);
+end
+if i==1
+range=xa(:,4);
+else
+    range=cat(1,range,xa(:,4));
+end
+
+if i==1
+height=xa(:,3);
+else
+    height=cat(1,height,xa(:,3));
+end
+    end    
+    ph=polyfit(time,height,4);
+    hy=polyval(ph,tspan);
+
+    pr=polyfit(time,range,4);
+    ry=polyval(pr,tspan);
 figure
 subplot(2,1,1)
-hold on
-plot(xa(:,4),xa(:,3),'r')
-plot(xb(:,4),xb(:,3),'k')
-plot(xc(:,4),xc(:,3),'g')
-hold off
-title('height vs range with initial velocity change');
-xlabel('Range, m'), ylabel('Height, m'), grid
-legend('lowest V','nominal V','maximum V');
+plot(tspan,hy);
+title('Height vs time ')
+xlabel('Time, s'), ylabel('Height, m'), grid
+legend('fit data with 4th order polynomial');
 
 subplot(2,1,2)
-hold on
-plot(xd(:,4),xd(:,3),'r')
-plot(xe(:,4),xe(:,3),'k')
-plot(xf(:,4),xf(:,3),'g')
-xlabel('Range, m'), ylabel('Height, m'), grid
-title('height vs range with initial flight path angle change');
-legend('lowest angle','nominal angle','maximum angle');
+plot(tspan,ry);
+title('Range vs time ')
+xlabel('Time, s'), ylabel('Range, m'), grid
+legend('fit data with 4th order polynomial');
+
+
+    %problem 3 sol
+% tspan	=	[0:0.001:6];
+% figure
+% hold on
+% title('height vs range with initial velocity and initial flight path angle change 100 times');
+% xlabel('Range, m'), ylabel('Height, m'), grid
+% 
+%     V1=2+(7.5-2)*rand(100,1);
+%     Gam1=-0.5+(0.4+0.5)*rand(100,1);
+%     for i=1:100;
+% xo		=	[V1(i);Gam1(i);H;R];
+% [ta,xa]	=	ode23('EqMotion',tspan,xo);
+% plot(xa(:,4),xa(:,3),'r')
+%     end
+
+  %problem 2 sol:\
+ % tspan=[to tf];
+%     V1=[2,3.55,7.5]
+%     xo		=	[V1(1);Gam;H;R];
+% 	[ta,xa]	=	ode23('EqMotion',tspan,xo);
+% 	xo		=	[V1(2);Gam;H;R];
+% 	[tb,xb]	=	ode23('EqMotion',tspan,xo);
+%     xo		=	[V1(3);Gam;H;R];
+% 	[tc,xc]	=	ode23('EqMotion',tspan,xo);
+% Gam1=[-0.5,-0.18,0.4]
+% xo=[V;Gam1(1);H;R];
+% [td,xd]	=	ode23('EqMotion',tspan,xo);
+% xo=[V;Gam1(2);H;R];
+% [te,xe]	=	ode23('EqMotion',tspan,xo);
+% xo=[V;Gam1(3);H;R];
+% [tf,xf]	=	ode23('EqMotion',tspan,xo);
+% 
+% figure
+% subplot(2,1,1)
+% hold on
+% plot(xa(:,4),xa(:,3),'r')
+% plot(xb(:,4),xb(:,3),'k')
+% plot(xc(:,4),xc(:,3),'g')
+% hold off
+% title('height vs range with initial velocity change');
+% xlabel('Range, m'), ylabel('Height, m'), grid
+% legend('lowest V','nominal V','maximum V');
+% 
+% subplot(2,1,2)
+% hold on
+% plot(xd(:,4),xd(:,3),'r')
+% plot(xe(:,4),xe(:,3),'k')
+% plot(xf(:,4),xf(:,3),'g')
+% xlabel('Range, m'), ylabel('Height, m'), grid
+% title('height vs range with initial flight path angle change');
+% legend('lowest angle','nominal angle','maximum angle');
 
 
 % %	b) Oscillating Glide due to Zero Initial Flight Path Angle
