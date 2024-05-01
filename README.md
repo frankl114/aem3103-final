@@ -11,7 +11,7 @@
   1. Based on Fig. 1, the paper airplane's flight path becomes highly unstable with a high initial velocity, almost flipping over upon launch.
   2. Modifying the initial flight path angle minimally affects the trajectory.
   3. As per Fig. 3, the paper airplane trajectory involves a rapid descent in height and an initial increase in horizontal velocity post-launch, followed by a stable horizontal velocity until landing.
-  *If the analysis falls short of the goal, this is your chance to explain what was done or what were the barriers.*
+  
  
   # Code Listing
 
