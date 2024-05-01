@@ -6,9 +6,6 @@
   ## Summary of Findings
   <Show the variations studied in a table>
 
-  Summarized what was accomplished in this study.  Describe 2-4 observations from simulating the flight path.
-  Reference the figures below as needed.
-
   In this study, The flight path of a paper airplane was simulated 100 times, with different initial velocity and flight path angle which was shown in figure 2. 
   Here are some observations:
   1. Based on Fig. 1, the paper airplane's flight path becomes highly unstable with a high initial velocity, almost flipping over upon launch.
@@ -17,7 +14,6 @@
   *If the analysis falls short of the goal, this is your chance to explain what was done or what were the barriers.*
  
   # Code Listing
-  A list of each function/script and a single-line description of what it does.  The name of the function/script should link to the file in the repository on GitHub.
 
   1. [PaperPlane.m](./PaperPlane.m)
   This file include the data for the paper airplane and the script to simulate and graph all the following figures.
@@ -31,7 +27,7 @@
   # Figures
 
   ## Fig. 1: Single Parameter Variation
-  <2D trajectory simulated by varying single parameter at at time>
+  <2D trajectory simulated by varying single parameter at a time>
   ![problem 2 figure](./figs/fig1.png)
   <The above plot should also show the nominal trajectory>
   In the first figure, it shows the flight path of the paper airplane with highest, nominal and minmum initial velocity.
@@ -41,7 +37,7 @@
   <2D trajectories simulated using random sampling of parameters, overlay polynomial fit onto plot.>
 ![problem 3 figure](./figs/fig2.png)
 
-  In this figure, it shows 100 flight path of the paper airplane with different inital velocity and initial flight path angle.
+  In this figure, it shows 100 flight path of the paper airplane with different inital velocity and initial flight path angle. The black line is the average trajectory of the 100 path which fit with a 5th order polynominal. (The 5th order was used because the result line is smooth and is about in the center of all the other lines)
 
  ## Fig. 3: Time Derivatives
  <Time-derivative of height and range for the fitted trajectory>

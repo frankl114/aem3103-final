@@ -42,7 +42,7 @@ xlabel('Range, m'), ylabel('Height, m'), grid
     for i=1:100;
 xo		=	[V1(i);Gam1(i);H;R];
 [ta,xa]	=	ode23('EqMotion',tspan,xo);
-plot(xa(:,4),xa(:,3),'r')
+hr=plot(xa(:,4),xa(:,3),'r');
 if i==1
     time=ta;
 else
@@ -60,24 +60,28 @@ else
     height=cat(1,height,xa(:,3));
 end
     end    
-    hold off
-    ph=polyfit(time,height,4);
+    
+    ph=polyfit(time,height,5);
     hy=polyval(ph,tspan);
 
-    pr=polyfit(time,range,4);
+    pr=polyfit(time,range,5);
     ry=polyval(pr,tspan);
-figure
-subplot(2,1,1)
-plot(tspan,hy);
-title('Height vs time ')
-xlabel('Time, s'), ylabel('Height, m'), grid
-legend('fit data with 4th order polynomial');
+    hp=plot(ry,hy,'k','LineWidth',3);
+    hold off
+    legend([hr,hp],'random trajectory','average trajectory with 5th order polyfit')
 
-subplot(2,1,2)
-plot(tspan,ry);
-title('Range vs time ')
-xlabel('Time, s'), ylabel('Range, m'), grid
-legend('fit data with 4th order polynomial');
+    % figure
+% subplot(2,1,1)
+% plot(tspan,hy);
+% title('Height vs time ')
+% xlabel('Time, s'), ylabel('Height, m'), grid
+% legend('fit data with 4th order polynomial');
+% 
+% subplot(2,1,2)
+% plot(tspan,ry);
+% title('Range vs time ')
+% xlabel('Time, s'), ylabel('Range, m'), grid
+% legend('fit data with 4th order polynomial');
 
 %prob4 part
 derh=num_der_central(tspan,hy);
